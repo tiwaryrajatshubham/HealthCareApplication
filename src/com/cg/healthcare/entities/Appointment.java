@@ -17,5 +17,47 @@ public class Appointment implements Serializable{
 	private Patient patient;
 	private DiagnosticCenter diagnosticCenter;
 	private Set<TestResult> testResult;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public LocalDate getAppointmentDate() {
+		return appointmentDate;
+	}
+	public void setAppointmentDate(LocalDate appointmentDate) {
+		this.appointmentDate = appointmentDate;
+	}
+	public AppointmentStatus getApprovalStatus() {
+		return approvalStatus;
+	}
+	public void setApprovalStatus(AppointmentStatus approvalStatus) {
+		this.approvalStatus = approvalStatus;
+	}
+	public Set<DiagnosticTest> getDiagnosticTests() {
+		return diagnosticTests;
+	}
+	public void setDiagnosticTests(Set<DiagnosticTest> diagnosticTests) {
+		this.diagnosticTests = diagnosticTests;
+	}
+	public Patient getPatient() {
+		return patient;
+	}
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+	public DiagnosticCenter getDiagnosticCenter() {
+		return diagnosticCenter;
+	}
+	public void setDiagnosticCenter(DiagnosticCenter diagnosticCenter) {
+		this.diagnosticCenter = diagnosticCenter;
+	}
+	public Set<TestResult> getTestResult() {
+		return testResult;
+	}
+	public void setTestResult(Set<TestResult> testResult) {
+		this.testResult = testResult;
+	}
 	
 }
