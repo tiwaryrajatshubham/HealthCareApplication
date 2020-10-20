@@ -7,4 +7,6 @@ public interface UserRepository {
 	User validateUser(String username, String password) throws Exception;
 	public User addUser(User user);
 	public User removeUser(User user);
+	public void commitTransaction();
+	public void beginTransaction();
 }
