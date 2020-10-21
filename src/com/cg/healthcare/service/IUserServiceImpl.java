@@ -23,7 +23,7 @@ public class IUserServiceImpl implements IUserService {
 		dao.beginTransaction();
 		dao.addUser(user);
 		dao.commitTransaction();
-		return null;
+		return user;
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class IUserServiceImpl implements IUserService {
 		dao.beginTransaction();
 		dao.removeUser(user);
 		dao.commitTransaction();
-		return null;
+		return user;
 	}
 	
 	

@@ -10,7 +10,12 @@ public class JPAUtil {
 	private static EntityManager entityManager;
 	
 	static {
-		factory = Persistence.createEntityManagerFactory("HealthCare");
+		try {
+		factory = Persistence.createEntityManagerFactory("JPA");
+		}
+		catch (Throwable ex){
+			 throw new ExceptionInInitializerError(ex);
+		}
 	}
 	
 	public static EntityManager getEntityManager() {
