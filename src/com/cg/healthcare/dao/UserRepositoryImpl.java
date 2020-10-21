@@ -1,7 +1,11 @@
 package com.cg.healthcare.dao;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import com.cg.healthcare.entities.User;
 import com.cg.healthcare.dao.JPAUtil;
@@ -18,7 +22,16 @@ public class UserRepositoryImpl implements UserRepository {
 	@Override
 	public User validateUser(String username, String password) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		
+		User usr=new User();
+		Query q=entityManager.createNativeQuery("select * from users where username= :username and password= :password");
+		q.setParameter("username",username);
+		q.setParameter("password",password);
+		List<User> l=q.getResultList();
+		for(User u:l) {
+			System.out.println(u);
+		}
+		return usr;
 	}
 
 	@Override

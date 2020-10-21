@@ -14,7 +14,23 @@ public class IUserServiceImpl implements IUserService {
 	@Override
 	public User validateUser(String username, String password) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		User usrobj1=new User();
+	
+		usrobj1=dao.validateUser(username, password);
+		try {
+		if(usrobj1!=null) {
+			System.out.println("Valid User");
+		}
+		else {
+			System.out.println("Invalid User");
+		}
+		}
+		catch(Exception e) {
+			System.out.println("Validation Exception "+e);
+		}
+	
+		
+		return usrobj1;
 	}
 
 	@Override
