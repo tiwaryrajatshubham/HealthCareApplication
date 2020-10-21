@@ -28,7 +28,8 @@ public class UserRepositoryImpl implements UserRepository {
 	@Override
 	public User removeUser(User user) {
 		// TODO Auto-generated method stub
-		return null;
+		entityManager.remove(user);
+		return user;
 	}
 	@Override
 	public void beginTransaction() {

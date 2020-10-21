@@ -29,6 +29,9 @@ public class IUserServiceImpl implements IUserService {
 	@Override
 	public User removeUser(User user) {
 		// TODO Auto-generated method stub
+		dao.beginTransaction();
+		dao.removeUser(user);
+		dao.commitTransaction();
 		return null;
 	}
 	
