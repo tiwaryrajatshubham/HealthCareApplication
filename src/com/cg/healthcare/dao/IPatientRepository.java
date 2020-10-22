@@ -11,11 +11,14 @@ import com.cg.healthcare.entities.TestResult;
 
 public interface IPatientRepository{
 	Patient registerPatient(Patient patient) throws Exception;
+	
+	
+	
 	Patient updatePatientDetails(Patient patient);
 	Patient viewPatient(String patientUserName);
 
 	List<TestResult> getAllTestResult(String patientUserName) throws Exception;
 	TestResult viewTestResult(int testResultId) throws Exception;
 	//add functionalities if required
-	
+	 
 }

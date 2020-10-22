@@ -1,15 +1,25 @@
 package com.cg.healthcare.entities;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.time.LocalDate;
+
 
 import com.cg.healthcare.exception.InvalidAppointmentStatusException;
-
+@Entity
+@Table(name ="Appointment")
 public class Appointment implements Serializable{
 	
-	
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private LocalDate appointmentDate;
 	private AppointmentStatus approvalStatus;  
@@ -26,6 +36,7 @@ public class Appointment implements Serializable{
 	public LocalDate getAppointmentDate() {
 		return appointmentDate;
 	}
+	
 	public void setAppointmentDate(LocalDate appointmentDate) {
 		this.appointmentDate = appointmentDate;
 	}
@@ -59,5 +70,14 @@ public class Appointment implements Serializable{
 	public void setTestResult(Set<TestResult> testResult) {
 		this.testResult = testResult;
 	}
-	
+	@Override
+    public String toString() {
+        return "Appointment{" +
+            "id ='" + id + '\'' +
+            ", appointmentDate ='" + appointmentDate + '\'' +
+            ", approvalStatus ='" + approvalStatus + '\'' +
+            ", diagnosticTests='" + diagnosticTests + '\'' +
+            ", patient='" + patient + '\'' +
+            ", diagnosticCenter='" + diagnosticCenter + '\'' + "}";	
+}
 }
