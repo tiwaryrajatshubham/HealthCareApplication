@@ -44,6 +44,7 @@ public class IUserServiceImpl implements IUserService {
 			dao.addUser(user);
 			System.out.println("User added sucessfully");
 			dao.commitTransaction();
+		
 			
 		} catch (Exception e) {
 			System.out.println("Could not add user due to " + e);
@@ -61,6 +62,7 @@ public class IUserServiceImpl implements IUserService {
 			dao.removeUser(user);
 			System.out.println("User deleted sucessfully");
 			dao.commitTransaction();
+		
 		} catch (Exception e) {
 			System.out.println("Could not delete user due to " + e);
 		}

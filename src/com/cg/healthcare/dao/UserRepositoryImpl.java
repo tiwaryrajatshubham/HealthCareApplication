@@ -31,7 +31,7 @@ public class UserRepositoryImpl implements UserRepository {
 	@Override
 	public User validateUser(String username, String password) throws Exception {
 		// TODO Auto-generated method stub
-		User usrobj = new User();
+		
 		try {
 			Query q = entityManager
 					.createNativeQuery("select * from users where username= :username and password= :password");
@@ -78,5 +78,7 @@ public class UserRepositoryImpl implements UserRepository {
 	public void commitTransaction() {
 		entityManager.getTransaction().commit();
 	}
+	
+	
 
 }

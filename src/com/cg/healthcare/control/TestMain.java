@@ -33,20 +33,25 @@ public class TestMain {
 		for(Object u:us) {
 			System.out.println(u);
 		}*/
+		IAdminServiceImpl impl=new IAdminServiceImpl();
+		
 		User userObj=new User();
-		userObj.setId(1);
-		userObj.setUsername("rohan");
-		userObj.setPassword("rohan@");
+		userObj.setId(8);
+		userObj.setUsername("raj");
+		userObj.setPassword("raj@");
 		userObj.setRole("admin");
 		IUserServiceImpl objusi=new IUserServiceImpl();
 		try {
-	objusi.validateUser("rohan","rohan@");
-	objusi.removeUser(userObj);
+	//objusi.validateUser("rohan","rohan@");
+	//objusi.removeUser(userObj);
+			//objusi.addUser(userObj);
+			impl.registerAdmin("aman","aman@");
+			
 		}
 		catch(Exception e) {
 			
 		}
-		obj1.addUser(obj);
+		
 		
 }
 }
