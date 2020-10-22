@@ -1,4 +1,13 @@
+/*
+* The UserRepositoryImpl program is an implementation of User Repository  that
+* performs user related operations.
+*
+* @author  Tiwary Rajat Shubham
+* @since   2020-10-21 
+*/
+
 package com.cg.healthcare.dao;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,35 +27,48 @@ public class UserRepositoryImpl implements UserRepository {
 		entityManager = JPAUtil.getEntityManager();
 	}
 
-
+	// Method to check whether a user is valid or not based on username and password
 	@Override
 	public User validateUser(String username, String password) throws Exception {
 		// TODO Auto-generated method stub
-		
-		User usr=new User();
-		Query q=entityManager.createNativeQuery("select * from users where username= :username and password= :password");
-		q.setParameter("username",username);
-		q.setParameter("password",password);
-		List<User> l=q.getResultList();
-		for(User u:l) {
-			System.out.println(u);
+		User usrobj = new User();
+		try {
+			Query q = entityManager
+					.createNativeQuery("select * from users where username= :username and password= :password");
+			q.setParameter("username", username);
+			q.setParameter("password", password);
+			Object[] userObj = (Object[]) q.getSingleResult();
+
+			if (userObj != null) {
+				for (Object u : userObj) {
+					System.out.print(u + " ");
+				}
+				System.out.println("is a valid user");
+			} else
+				throw new Exception();
+		} catch (Exception e) {
+			System.out.println("User not valid " + e);
 		}
-		return usr;
+
+	return null;
 	}
 
+	// Method to add a user object to database
 	@Override
 	public User addUser(User user) {
 		// TODO Auto-generated method stub
-		entityManager.persist(user);		
+		entityManager.persist(user);
 		return user;
 	}
 
+	// Method to remove a user from database
 	@Override
 	public User removeUser(User user) {
 		// TODO Auto-generated method stub
 		entityManager.remove(user);
 		return user;
 	}
+
 	@Override
 	public void beginTransaction() {
 		entityManager.getTransaction().begin();
@@ -56,7 +78,5 @@ public class UserRepositoryImpl implements UserRepository {
 	public void commitTransaction() {
 		entityManager.getTransaction().commit();
 	}
-	
-	
-}
 
+}
