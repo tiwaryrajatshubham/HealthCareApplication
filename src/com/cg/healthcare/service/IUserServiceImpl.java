@@ -44,14 +44,14 @@ public class IUserServiceImpl implements IUserService {
 		// TODO Auto-generated method stub
 
 		try {
-			dao.beginTransaction();
 			dao.addUser(user);
 			System.out.println("User added sucessfully");
-			dao.commitTransaction();
 
 		} catch (Exception e) {
 			System.out.println("Could not add user due to " + e);
+			user=null;
 		}
+		
 
 		return user;
 	}
@@ -65,7 +65,8 @@ public class IUserServiceImpl implements IUserService {
 			System.out.println("User deleted sucessfully");
 
 		} catch (Exception e) {
-			System.out.println("Could not delete user due to " + e);
+			System.out.println("Could not delete user due to "+e);
+			user=null;
 		}
 		return user;
 	}

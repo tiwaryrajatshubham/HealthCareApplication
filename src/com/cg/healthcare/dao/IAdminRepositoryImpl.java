@@ -25,6 +25,7 @@ public class IAdminRepositoryImpl implements IAdminRepository {
 	@Override
 	public void registerAdmin(String username, String password) throws Exception {
 		// TODO Auto-generated method stub
+		
 		Random random = new Random();
 		int id = random.nextInt();
 		User userObj = new User();

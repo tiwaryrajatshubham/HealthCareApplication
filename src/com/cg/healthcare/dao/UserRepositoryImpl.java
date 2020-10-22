@@ -54,7 +54,10 @@ public class UserRepositoryImpl implements UserRepository {
 	@Override
 	public User addUser(User user) {
 		// TODO Auto-generated method stub
-		entityManager.persist(user);
+		EntityManager eManager = JPAUtil.getEntityManager();
+		eManager.getTransaction().begin();
+		eManager.persist(user);
+		eManager.getTransaction().commit();
 		return user;
 	}
 
