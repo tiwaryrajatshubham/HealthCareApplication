@@ -1,15 +1,12 @@
-/*
-* The UserRepositoryImpl program is an implementation of User Repository  that
+/**
+* The UserRepositoryImpl is an implementation of UserRepository Interface  that
 * performs user related operations.
-*
+* 
 * @author  Tiwary Rajat Shubham
+* @version 1.0
 * @since   2020-10-21 
 */
-
 package com.cg.healthcare.dao;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -31,7 +28,7 @@ public class UserRepositoryImpl implements UserRepository {
 	@Override
 	public User validateUser(String username, String password) throws Exception {
 		// TODO Auto-generated method stub
-		
+
 		try {
 			Query q = entityManager
 					.createNativeQuery("select * from users where username= :username and password= :password");
@@ -50,7 +47,7 @@ public class UserRepositoryImpl implements UserRepository {
 			System.out.println("User not valid " + e);
 		}
 
-	return null;
+		return null;
 	}
 
 	// Method to add a user object to database
@@ -65,20 +62,22 @@ public class UserRepositoryImpl implements UserRepository {
 	@Override
 	public User removeUser(User user) {
 		// TODO Auto-generated method stub
-		entityManager.remove(user);
+		EntityManager em = JPAUtil.getEntityManager();
+		User userObj = em.find(User.class, user.getId());
+		em.getTransaction().begin();
+		em.remove(userObj);
+		em.getTransaction().commit();
 		return user;
 	}
 
-	@Override
+	// Method for starting transaction
 	public void beginTransaction() {
 		entityManager.getTransaction().begin();
 	}
 
-	@Override
+	// Method for transaction commit
 	public void commitTransaction() {
 		entityManager.getTransaction().commit();
 	}
-	
-	
 
 }

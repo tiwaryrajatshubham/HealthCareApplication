@@ -1,8 +1,9 @@
-/*
+/**
 * The IUserServiceImpl program is an implementation of UserService interface that
 * performs user related operations.
 *
 * @author  Tiwary Rajat Shubham
+* @version 1.0
 * @since   2020-10-21 
 */
 
@@ -17,20 +18,23 @@ import com.cg.healthcare.dao.UserRepositoryImpl;
 import com.cg.healthcare.entities.User;
 
 public class IUserServiceImpl implements IUserService {
-	private UserRepository dao;
-	
-	
+	private UserRepositoryImpl dao;
 
 	public IUserServiceImpl() {
 		dao = new UserRepositoryImpl();
-		
+
 	}
 
 	// Method to check whether a user is valid or not based on username and password
 	@Override
 	public User validateUser(String username, String password) throws Exception {
 		// TODO Auto-generated method stub
-		dao.validateUser(username, password);
+		try {
+			dao.validateUser(username, password);
+		} catch (Exception e) {
+			System.out.println(e);
+
+		}
 		return null;
 	}
 
@@ -44,8 +48,7 @@ public class IUserServiceImpl implements IUserService {
 			dao.addUser(user);
 			System.out.println("User added sucessfully");
 			dao.commitTransaction();
-		
-			
+
 		} catch (Exception e) {
 			System.out.println("Could not add user due to " + e);
 		}
@@ -58,11 +61,9 @@ public class IUserServiceImpl implements IUserService {
 	public User removeUser(User user) {
 		// TODO Auto-generated method stub
 		try {
-			dao.beginTransaction();
 			dao.removeUser(user);
 			System.out.println("User deleted sucessfully");
-			dao.commitTransaction();
-		
+
 		} catch (Exception e) {
 			System.out.println("Could not delete user due to " + e);
 		}
