@@ -13,40 +13,24 @@ import com.cg.healthcare.entities.User;
 import com.cg.healthcare.service.*;
 public class TestMain {
 	public static void main(String args[]) {
-		User obj=new User();
-		
-		obj.setPassword("rohan@");
-		obj.setRole("admin");
-		obj.setId(1);
-		obj.setUsername("rohan");
-		//User obj3=new User();
-		IUserServiceImpl obj1=new IUserServiceImpl();
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("JPA");
-		//EntityManager obj2=factory.createEntityManager();
-		//obj=obj2.find(User.class,1);
-		//System.out.println(obj.toString());
-		/*User usr=new User();
-		Query q=obj2.createNativeQuery("select * from users where username= :username and password= :password");
-		q.setParameter("username","rajat");
-		q.setParameter("password","shubham@");
-		Object[]  us=(Object[]) q.getSingleResult();
-		for(Object u:us) {
-			System.out.println(u);
-		}*/
 		User userObj=new User();
-		userObj.setId(1);
-		userObj.setUsername("rohan");
-		userObj.setPassword("rohan@");
+		userObj.setPassword("rohan");
 		userObj.setRole("admin");
-		IUserServiceImpl objusi=new IUserServiceImpl();
+		userObj.setId(1);
+		userObj.setUsername("rohan@");
+		IUserServiceImpl iUserServiceImplObj=new IUserServiceImpl();
+		IAdminServiceImpl iAdminServiceImplObj=new IAdminServiceImpl();
 		try {
-	objusi.validateUser("rohan","rohan@");
-	objusi.removeUser(userObj);
+			//iUserServiceImplObj.validateUser("rajat","rajat@");
+			//iUserServiceImplObj.removeUser(userObj);
+			//iUserServiceImplObj.addUser(userObj);
+			//iAdminServiceImplObj.registerAdmin("John","john@");
+			
 		}
 		catch(Exception e) {
 			
 		}
-		obj1.addUser(obj);
+		
 		
 }
 }

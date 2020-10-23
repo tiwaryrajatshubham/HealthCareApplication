@@ -12,4 +12,6 @@ import com.cg.healthcare.entities.User;
 public interface IAdminRepository {
 	
 		void registerAdmin(String username, String password) throws Exception;
+
+	
 }
